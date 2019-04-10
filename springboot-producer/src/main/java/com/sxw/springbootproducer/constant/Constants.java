@@ -1,6 +1,7 @@
 package com.sxw.springbootproducer.constant;
 
-public class Constants {
+public class Constants
+{
     public static final String ORDER_SENDING = "0"; //发送中
 
     public static final String ORDER_SEND_SUCCESS = "1"; //成功

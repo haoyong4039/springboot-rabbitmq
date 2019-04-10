@@ -16,16 +16,17 @@
         <artifactId>springboot-rabbitmq</artifactId>
         <version>1.0-SNAPSHOT</version>
     </parent>
+
     <dependencies>
         <dependency>
             <groupId>com.sxw</groupId>
             <artifactId>springboot-model</artifactId>
             <version>1.0-SNAPSHOT</version>
         </dependency>
-
     </dependencies>
 
     <build>
         <finalName>springboot-producer</finalName>
     </build>
+    
 </project>

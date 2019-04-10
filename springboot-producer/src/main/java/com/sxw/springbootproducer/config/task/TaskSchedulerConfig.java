@@ -11,15 +11,18 @@ import java.util.concurrent.Executors;
 
 @Configuration
 @EnableScheduling
-public class TaskSchedulerConfig implements SchedulingConfigurer {
+public class TaskSchedulerConfig implements SchedulingConfigurer
+{
 
     @Override
-    public void configureTasks(ScheduledTaskRegistrar taskRegistrar) {
+    public void configureTasks(ScheduledTaskRegistrar taskRegistrar)
+    {
         taskRegistrar.setScheduler(taskScheduler());
     }
 
-    @Bean(destroyMethod="shutdown")
-    public Executor taskScheduler(){
+    @Bean(destroyMethod = "shutdown")
+    public Executor taskScheduler()
+    {
         return Executors.newScheduledThreadPool(100);
     }
 

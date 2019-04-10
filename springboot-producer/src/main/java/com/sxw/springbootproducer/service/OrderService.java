@@ -14,7 +14,8 @@ import org.springframework.stereotype.Service;
 import java.util.Date;
 
 @Service
-public class OrderService {
+public class OrderService
+{
 
     @Autowired
     private OrderMapper orderMapper;
@@ -25,7 +26,8 @@ public class OrderService {
     @Autowired
     private RabbitOrderSender rabbitOrderSender;
 
-    public void createOrder(Order order) throws Exception {
+    public void createOrder(Order order) throws Exception
+    {
         // 使用当前时间当做订单创建时间（为了模拟一下简化）
         Date orderTime = new Date();
         // 插入业务数据

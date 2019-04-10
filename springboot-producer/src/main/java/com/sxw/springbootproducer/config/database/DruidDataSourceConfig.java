@@ -17,7 +17,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 
 @Configuration
 @EnableTransactionManagement
-public class DruidDataSourceConfig {
+public class DruidDataSourceConfig
+{
     private static Logger logger = LoggerFactory.getLogger(com.sxw.springbootproducer.config.database.DruidDataSourceConfig.class);
 
     @Autowired
@@ -26,12 +27,14 @@ public class DruidDataSourceConfig {
     public static String DRIVER_CLASSNAME;
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer propertyConfigure() {
+    public static PropertySourcesPlaceholderConfigurer propertyConfigure()
+    {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
     @Bean
-    public DataSource dataSource() throws SQLException {
+    public DataSource dataSource() throws SQLException
+    {
         DruidDataSource ds = new DruidDataSource();
         ds.setDriverClassName(druidSettings.getDriverClassName());
         DRIVER_CLASSNAME = druidSettings.getDriverClassName();
@@ -56,11 +59,11 @@ public class DruidDataSourceConfig {
     }
 
     @Bean
-    public PlatformTransactionManager transactionManager() throws Exception {
+    public PlatformTransactionManager transactionManager() throws Exception
+    {
         DataSourceTransactionManager txManager = new DataSourceTransactionManager();
         txManager.setDataSource(dataSource());
         return txManager;
     }
-
 
 }

@@ -7,10 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 @Configuration
 @AutoConfigureAfter(MybatisDataSourceConfig.class)
-public class MybatisMapperScanerConfig {
+public class MybatisMapperScanerConfig
+{
 
     @Bean
-    public MapperScannerConfigurer mapperScannerConfigurer() {
+    public MapperScannerConfigurer mapperScannerConfigurer()
+    {
         MapperScannerConfigurer mapperScannerConfigurer = new MapperScannerConfigurer();
         mapperScannerConfigurer.setSqlSessionFactoryBeanName("sqlSessionFactory");
         mapperScannerConfigurer.setBasePackage("com.sxw.springbootproducer.mapper");

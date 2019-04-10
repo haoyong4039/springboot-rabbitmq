@@ -14,8 +14,8 @@ import java.util.Date;
 import java.util.List;
 
 @Component
-public class RetryMessageTasker {
-
+public class RetryMessageTasker
+{
 
     @Autowired
     private RabbitOrderSender rabbitOrderSender;
@@ -24,21 +24,28 @@ public class RetryMessageTasker {
     private BrokerMessageLogMapper brokerMessageLogMapper;
 
     @Scheduled(initialDelay = 5000, fixedDelay = 10000)
-    public void reSend(){
+    public void reSend()
+    {
         System.out.println("-----------定时任务开始-----------");
         //pull status = 0 and timeout message
         List<BrokerMessageLog> list = brokerMessageLogMapper.query4StatusAndTimeoutMessage();
         list.forEach(messageLog -> {
-            if(messageLog.getTryCount() >= 3){
+            if (messageLog.getTryCount() >= 3)
+            {
                 //update fail message
                 brokerMessageLogMapper.changeBrokerMessageLogStatus(messageLog.getMessageId(), Constants.ORDER_SEND_FAILURE, new Date());
-            } else {
+            }
+            else
+            {
                 // resend
-                brokerMessageLogMapper.update4ReSend(messageLog.getMessageId(),  new Date());
+                brokerMessageLogMapper.update4ReSend(messageLog.getMessageId(), new Date());
                 Order reSendOrder = FastJsonConvertUtil.convertJSONToObject(messageLog.getMessage(), Order.class);
-                try {
+                try
+                {
                     rabbitOrderSender.sendOrder(reSendOrder);
-                } catch (Exception e) {
+                }
+                catch (Exception e)
+                {
                     e.printStackTrace();
                     System.err.println("-----------异常处理-----------");
                 }

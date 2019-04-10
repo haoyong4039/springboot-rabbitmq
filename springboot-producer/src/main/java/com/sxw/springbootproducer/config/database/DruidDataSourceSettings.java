@@ -10,10 +10,14 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix = "spring.datasource")
 @PropertySource("classpath:druid.properties")
-public class DruidDataSourceSettings {
+public class DruidDataSourceSettings
+{
     private String driverClassName;
+
     private String url;
+
     private String username;
+
     private String password;
 
     @Value("${druid.initialSize}")
@@ -56,111 +60,178 @@ public class DruidDataSourceSettings {
     private String connectionProperties;
 
     @Bean
-    public static PropertySourcesPlaceholderConfigurer properdtyConfigure(){
+    public static PropertySourcesPlaceholderConfigurer properdtyConfigure()
+    {
         return new PropertySourcesPlaceholderConfigurer();
     }
 
-    public String getDriverClassName() {
+    public String getDriverClassName()
+    {
         return driverClassName;
     }
-    public void setDriverClassName(String driverClassName) {
+
+    public void setDriverClassName(String driverClassName)
+    {
         this.driverClassName = driverClassName;
     }
-    public String getUrl() {
+
+    public String getUrl()
+    {
         return url;
     }
-    public void setUrl(String url) {
+
+    public void setUrl(String url)
+    {
         this.url = url;
     }
-    public String getUsername() {
+
+    public String getUsername()
+    {
         return username;
     }
-    public void setUsername(String username) {
+
+    public void setUsername(String username)
+    {
         this.username = username;
     }
-    public String getPassword() {
+
+    public String getPassword()
+    {
         return password;
     }
-    public void setPassword(String password) {
+
+    public void setPassword(String password)
+    {
         this.password = password;
     }
-    public int getInitialSize() {
+
+    public int getInitialSize()
+    {
         return initialSize;
     }
-    public void setInitialSize(int initialSize) {
+
+    public void setInitialSize(int initialSize)
+    {
         this.initialSize = initialSize;
     }
-    public int getMinIdle() {
+
+    public int getMinIdle()
+    {
         return minIdle;
     }
-    public void setMinIdle(int minIdle) {
+
+    public void setMinIdle(int minIdle)
+    {
         this.minIdle = minIdle;
     }
-    public int getMaxActive() {
+
+    public int getMaxActive()
+    {
         return maxActive;
     }
-    public void setMaxActive(int maxActive) {
+
+    public void setMaxActive(int maxActive)
+    {
         this.maxActive = maxActive;
     }
-    public long getTimeBetweenEvictionRunsMillis() {
+
+    public long getTimeBetweenEvictionRunsMillis()
+    {
         return timeBetweenEvictionRunsMillis;
     }
-    public void setTimeBetweenEvictionRunsMillis(long timeBetweenEvictionRunsMillis) {
+
+    public void setTimeBetweenEvictionRunsMillis(long timeBetweenEvictionRunsMillis)
+    {
         this.timeBetweenEvictionRunsMillis = timeBetweenEvictionRunsMillis;
     }
-    public long getMinEvictableIdleTimeMillis() {
+
+    public long getMinEvictableIdleTimeMillis()
+    {
         return minEvictableIdleTimeMillis;
     }
-    public void setMinEvictableIdleTimeMillis(long minEvictableIdleTimeMillis) {
+
+    public void setMinEvictableIdleTimeMillis(long minEvictableIdleTimeMillis)
+    {
         this.minEvictableIdleTimeMillis = minEvictableIdleTimeMillis;
     }
-    public String getValidationQuery() {
+
+    public String getValidationQuery()
+    {
         return validationQuery;
     }
-    public void setValidationQuery(String validationQuery) {
+
+    public void setValidationQuery(String validationQuery)
+    {
         this.validationQuery = validationQuery;
     }
-    public boolean isTestWhileIdle() {
+
+    public boolean isTestWhileIdle()
+    {
         return testWhileIdle;
     }
-    public void setTestWhileIdle(boolean testWhileIdle) {
+
+    public void setTestWhileIdle(boolean testWhileIdle)
+    {
         this.testWhileIdle = testWhileIdle;
     }
-    public boolean isTestOnBorrow() {
+
+    public boolean isTestOnBorrow()
+    {
         return testOnBorrow;
     }
-    public void setTestOnBorrow(boolean testOnBorrow) {
+
+    public void setTestOnBorrow(boolean testOnBorrow)
+    {
         this.testOnBorrow = testOnBorrow;
     }
-    public boolean isTestOnReturn() {
+
+    public boolean isTestOnReturn()
+    {
         return testOnReturn;
     }
-    public void setTestOnReturn(boolean testOnReturn) {
+
+    public void setTestOnReturn(boolean testOnReturn)
+    {
         this.testOnReturn = testOnReturn;
     }
-    public boolean isPoolPreparedStatements() {
+
+    public boolean isPoolPreparedStatements()
+    {
         return poolPreparedStatements;
     }
-    public void setPoolPreparedStatements(boolean poolPreparedStatements) {
+
+    public void setPoolPreparedStatements(boolean poolPreparedStatements)
+    {
         this.poolPreparedStatements = poolPreparedStatements;
     }
-    public int getMaxPoolPreparedStatementPerConnectionSize() {
+
+    public int getMaxPoolPreparedStatementPerConnectionSize()
+    {
         return maxPoolPreparedStatementPerConnectionSize;
     }
-    public void setMaxPoolPreparedStatementPerConnectionSize(
-            int maxPoolPreparedStatementPerConnectionSize) {
+
+    public void setMaxPoolPreparedStatementPerConnectionSize(int maxPoolPreparedStatementPerConnectionSize)
+    {
         this.maxPoolPreparedStatementPerConnectionSize = maxPoolPreparedStatementPerConnectionSize;
     }
-    public String getFilters() {
+
+    public String getFilters()
+    {
         return filters;
     }
-    public void setFilters(String filters) {
+
+    public void setFilters(String filters)
+    {
         this.filters = filters;
     }
-    public String getConnectionProperties() {
+
+    public String getConnectionProperties()
+    {
         return connectionProperties;
     }
-    public void setConnectionProperties(String connectionProperties) {
+
+    public void setConnectionProperties(String connectionProperties)
+    {
         this.connectionProperties = connectionProperties;
     }
 }

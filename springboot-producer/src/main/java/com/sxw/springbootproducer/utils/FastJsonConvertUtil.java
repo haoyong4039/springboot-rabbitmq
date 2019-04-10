@@ -5,13 +5,18 @@ import com.alibaba.fastjson.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.sxw.entity.Order;
 
-public class FastJsonConvertUtil {
-    public static Order convertJSONToObject(String message,Object obj){
-        Order order = JSON.parseObject(message, new TypeReference<Order>() {});
+public class FastJsonConvertUtil
+{
+    public static Order convertJSONToObject(String message, Object obj)
+    {
+        Order order = JSON.parseObject(message, new TypeReference<Order>()
+        {
+        });
         return order;
     }
 
-    public static String convertObjectToJSON(Object obj){
+    public static String convertObjectToJSON(Object obj)
+    {
         String text = JSON.toJSONString(obj);
         return text;
     }
