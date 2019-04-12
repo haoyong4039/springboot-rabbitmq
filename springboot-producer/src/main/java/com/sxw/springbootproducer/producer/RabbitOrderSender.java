@@ -3,6 +3,8 @@ package com.sxw.springbootproducer.producer;
 import com.sxw.entity.Order;
 import com.sxw.springbootproducer.constant.Constants;
 import com.sxw.springbootproducer.mapper.BrokerMessageLogMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,21 +15,24 @@ import java.util.Date;
 @Component
 public class RabbitOrderSender
 {
-    //自动注入RabbitTemplate模板类
+    private static Logger logger = LoggerFactory.getLogger(RabbitOrderSender.class);
+
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
     @Autowired
     private BrokerMessageLogMapper brokerMessageLogMapper;
 
-    //回调函数: confirm确认
+    // 回调函数: confirm确认
     final RabbitTemplate.ConfirmCallback confirmCallback = new RabbitTemplate.ConfirmCallback()
     {
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause)
         {
-            System.err.println("correlationData: " + correlationData);
             String messageId = correlationData.getId();
+
+            logger.info("ConfirmCallback messageId:{}",messageId);
+
             if (ack)
             {
                 //如果confirm返回成功 则进行更新

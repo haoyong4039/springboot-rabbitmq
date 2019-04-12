@@ -35,7 +35,7 @@ public class RetryMessageTasker
         // 查询消息状态为0(发送中) 且已经超时的消息集合
         List<BrokerMessageLog> list = brokerMessageLogMapper.queryStatusAndTimeoutMessage();
 
-        logger.info("MsgResendList:",list);
+        logger.info("MsgResendList:{}",list);
 
         list.forEach(messageLog -> {
             if (messageLog.getTryCount() >= 3)
