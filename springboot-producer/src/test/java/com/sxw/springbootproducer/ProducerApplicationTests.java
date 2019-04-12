@@ -35,7 +35,7 @@ public class ProducerApplicationTests
     public void testSend() throws Exception
     {
         Order order = new Order();
-        order.setId(20110105);
+        order.setId(20110108);
         order.setName("testOrder");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
         orderService.createOrder(order);

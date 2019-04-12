@@ -33,6 +33,8 @@ public class RabbitOrderSender
 
             logger.info("ConfirmCallback messageId:{}",messageId);
 
+            logger.info("ConfirmCallback cause:{}",cause);
+
             if (ack)
             {
                 //如果confirm返回成功 则进行更新
