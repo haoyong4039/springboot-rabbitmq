@@ -29,11 +29,9 @@ public class RabbitOrderSender
         @Override
         public void confirm(CorrelationData correlationData, boolean ack, String cause)
         {
+            logger.info("correlationData:{},ack:{},cause:{}", correlationData, ack, cause);
+
             String messageId = correlationData.getId();
-
-            logger.info("ConfirmCallback messageId:{}",messageId);
-
-            logger.info("ConfirmCallback cause:{}",cause);
 
             if (ack)
             {

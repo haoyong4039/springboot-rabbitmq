@@ -59,8 +59,6 @@ public class RetryMessageTasker
                 }
             }
         });
-
-        logger.info("----------------------------------");
     }
 }
 
