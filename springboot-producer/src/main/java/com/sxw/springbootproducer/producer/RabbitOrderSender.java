@@ -31,9 +31,7 @@ public class RabbitOrderSender
             if (ack)
             {
                 //如果confirm返回成功 则进行更新
-                brokerMessageLogMapper.changeBrokerMessageLogStatus(messageId,
-                    Constants.ORDER_SEND_SUCCESS,
-                    new Date());
+                brokerMessageLogMapper.changeBrokerMessageLogStatus(messageId, Constants.ORDER_SEND_SUCCESS, new Date());
             }
             else
             {

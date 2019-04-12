@@ -25,7 +25,11 @@ mybatis:
   type-aliases-package: com.sxw.springbootproducer
   mapper-locations: classpath:com/sxw/springbootproducer/mapping/*.xml
 
+# 日志格式
 logging:
-  level:
-    tk:
-      mybatis: trace
+    # 设置包日志级别
+    level:
+        com.sxw.springbootproducer.mapper: debug
+    # 设置控制台打印日志格式
+    pattern:
+      console: "%d{yyyy-MM-dd HH:mm:ss.SSS} [%thread] %-5level %C.%M[%L] - %msg%n"

@@ -53,9 +53,6 @@ public class DruidDataSourceSettings
     @Value("${druid.maxPoolPreparedStatementPerConnectionSize}")
     private int maxPoolPreparedStatementPerConnectionSize;
 
-    @Value("${druid.filters}")
-    private String filters;
-
     @Value("${druid.connectionProperties}")
     private String connectionProperties;
 
@@ -213,16 +210,6 @@ public class DruidDataSourceSettings
     public void setMaxPoolPreparedStatementPerConnectionSize(int maxPoolPreparedStatementPerConnectionSize)
     {
         this.maxPoolPreparedStatementPerConnectionSize = maxPoolPreparedStatementPerConnectionSize;
-    }
-
-    public String getFilters()
-    {
-        return filters;
-    }
-
-    public void setFilters(String filters)
-    {
-        this.filters = filters;
     }
 
     public String getConnectionProperties()

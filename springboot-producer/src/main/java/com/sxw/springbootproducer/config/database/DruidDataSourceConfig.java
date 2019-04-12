@@ -19,12 +19,8 @@ import com.alibaba.druid.pool.DruidDataSource;
 @EnableTransactionManagement
 public class DruidDataSourceConfig
 {
-    private static Logger logger = LoggerFactory.getLogger(com.sxw.springbootproducer.config.database.DruidDataSourceConfig.class);
-
     @Autowired
     private DruidDataSourceSettings druidSettings;
-
-    public static String DRIVER_CLASSNAME;
 
     @Bean
     public static PropertySourcesPlaceholderConfigurer propertyConfigure()
@@ -37,7 +33,6 @@ public class DruidDataSourceConfig
     {
         DruidDataSource ds = new DruidDataSource();
         ds.setDriverClassName(druidSettings.getDriverClassName());
-        DRIVER_CLASSNAME = druidSettings.getDriverClassName();
         ds.setUrl(druidSettings.getUrl());
         ds.setUsername(druidSettings.getUsername());
         ds.setPassword(druidSettings.getPassword());
@@ -52,9 +47,7 @@ public class DruidDataSourceConfig
         ds.setTestOnReturn(druidSettings.isTestOnReturn());
         ds.setPoolPreparedStatements(druidSettings.isPoolPreparedStatements());
         ds.setMaxPoolPreparedStatementPerConnectionSize(druidSettings.getMaxPoolPreparedStatementPerConnectionSize());
-        ds.setFilters(druidSettings.getFilters());
         ds.setConnectionProperties(druidSettings.getConnectionProperties());
-        logger.info(" druid datasource config : {} ", ds);
         return ds;
     }
 

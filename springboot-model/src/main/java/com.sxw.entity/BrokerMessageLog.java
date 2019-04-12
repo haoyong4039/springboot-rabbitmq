@@ -87,5 +87,12 @@ public class BrokerMessageLog
     {
         this.updateTime = updateTime;
     }
+
+    @Override public String toString()
+    {
+        return "BrokerMessageLog{" + "messageId='" + messageId + '\'' + ", message='" + message + '\'' + ", tryCount="
+            + tryCount + ", status='" + status + '\'' + ", nextRetry=" + nextRetry + ", createTime=" + createTime
+            + ", updateTime=" + updateTime + '}';
+    }
 }
 

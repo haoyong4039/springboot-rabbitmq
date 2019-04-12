@@ -8,12 +8,14 @@ import java.util.List;
 
 public interface BrokerMessageLogMapper
 {
+    int insertSelective(BrokerMessageLog record);
+
     /**
      * 查询消息状态为0(发送中) 且已经超时的消息集合
      *
      * @return
      */
-    List<BrokerMessageLog> query4StatusAndTimeoutMessage();
+    List<BrokerMessageLog> queryStatusAndTimeoutMessage();
 
     /**
      * 重新发送统计count发送次数 +1
@@ -21,7 +23,7 @@ public interface BrokerMessageLogMapper
      * @param messageId
      * @param updateTime
      */
-    void update4ReSend(@Param("messageId") String messageId, @Param("updateTime") Date updateTime);
+    void updateReSend(@Param("messageId") String messageId, @Param("updateTime") Date updateTime);
 
     /**
      * 更新最终消息发送结果 成功 or 失败
@@ -32,7 +34,5 @@ public interface BrokerMessageLogMapper
      */
     void changeBrokerMessageLogStatus(@Param("messageId") String messageId, @Param("status") String status,
         @Param("updateTime") Date updateTime);
-
-    int insertSelective(BrokerMessageLog record);
 }
 
