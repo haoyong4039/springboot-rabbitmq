@@ -1,10 +1,15 @@
 package com.sxw.springbootproducer.producer;
 
 import com.sxw.entity.Order;
+import com.sxw.springbootproducer.constant.Constants;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.amqp.rabbit.core.RabbitTemplate;
 import org.springframework.amqp.rabbit.support.CorrelationData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
+
+import java.util.Date;
 
 /**
  *  简单模拟发送，详见test测试用例
@@ -15,18 +20,19 @@ public class OrderSender
     @Autowired
     private RabbitTemplate rabbitTemplate;
 
+    final RabbitTemplate.ConfirmCallback ccb = new RabbitTemplate.ConfirmCallback()
+    {
+        @Override
+        public void confirm(CorrelationData correlationData, boolean ack, String cause)
+        {
+            System.out.println(ack);
+        }
+    };
+
     public void send(Order order)
     {
-        // 设置消息唯一Id
-        CorrelationData correlationData = new CorrelationData();
-        correlationData.setId(order.getMessageId());
-        rabbitTemplate.convertAndSend("order-exchange", "order.abcd", order, correlationData);
-        /**
-         * 1. 在15672控制台手动创建exchange和queue
-         *    在exchange或queue中进行exchange和queue的绑定
-         *    routing-key采用order.*或者order.#，区别：*只支持order.xxx，不支持order.xxx.xxx
-         *
-         * 2. 使用代码进行exchange和queue的绑定，详细配置可自行搜索
-         */
+        rabbitTemplate.setConfirmCallback(ccb);
+        CorrelationData correlationData = new CorrelationData(order.getMessageId());
+        rabbitTemplate.convertAndSend("order-exchange", "order.B", order, correlationData);
     }
 }

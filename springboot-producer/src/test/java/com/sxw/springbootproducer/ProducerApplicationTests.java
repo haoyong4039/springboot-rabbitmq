@@ -25,7 +25,7 @@ public class ProducerApplicationTests
     public void testSendSimple() throws Exception
     {
         Order order = new Order();
-        order.setId(00000000001);
+        order.setId(10001);
         order.setName("testOrderSimple");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
         orderSender.send(order);
@@ -35,7 +35,7 @@ public class ProducerApplicationTests
     public void testSend() throws Exception
     {
         Order order = new Order();
-        order.setId(20110118);
+        order.setId(20002);
         order.setName("testOrder");
         order.setMessageId(System.currentTimeMillis() + "$" + UUID.randomUUID().toString());
         orderService.createOrder(order);
