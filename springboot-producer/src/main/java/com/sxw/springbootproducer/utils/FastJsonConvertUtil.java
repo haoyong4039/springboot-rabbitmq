@@ -9,9 +9,7 @@ public class FastJsonConvertUtil
 {
     public static Order convertJSONToObject(String message, Object obj)
     {
-        Order order = JSON.parseObject(message, new TypeReference<Order>()
-        {
-        });
+        Order order = JSON.parseObject(message, new TypeReference<Order>() {});
         return order;
     }
 
